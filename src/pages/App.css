@@ -1,0 +1,7 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  align-items: flex-start;  /* This ensures that all items are aligned to the left */
+  padding: 16px;
+}

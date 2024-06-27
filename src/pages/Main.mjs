@@ -1,0 +1,30 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import { Login, Register, Logout } from "../components/Forms/Auth.js";
+import SearchChannelPanel from '../components/Channels/SearchChannelPanel.js';
+import MyChannels from '../components/Channels/MyChannels.js';
+import { CreateChannelForm } from '../components/Forms/CreateChannelForm.js';
+import { CreateChannelEventForm } from '../components/Forms/CreateChannelEventForm.js';
+import { CreateAccessDocumentForm } from '../components/Forms/CreateAccessDocumentForm.js';
+import MyAccessDocuments from '../components/AccessDocuments/MyAccessDocuments.js';
+
+export default function Main() {
+  return (
+    <Routes>
+      <Route path="/" element={<h1>hola</h1>} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/logout" element={<Logout />} />
+
+      <Route path="/channels/create" element={<CreateChannelForm />} />
+      <Route path="/channels/my" element={<MyChannels />} />
+      <Route path="/channels/search" element={<SearchChannelPanel />} />
+
+      <Route path="/events/create" element={<CreateChannelEventForm />} />
+      
+      <Route path="/access_documents/create" element={<CreateAccessDocumentForm />} />
+      <Route path="/access_documents/my" element={<MyAccessDocuments />} />
+    </Routes>
+  );
+}
