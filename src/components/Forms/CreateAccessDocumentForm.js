@@ -24,14 +24,13 @@ export function CreateAccessDocumentForm() {
 
         try {
             const accessDocumentPayload = {
-                enabled: enabledInput.value,
-                requires_approval: requiresApprovalInput.value,
                 action_type: actionTypeInput.value,
                 target_channel_id: targetChannelIDInput.value,
                 channel_title_template: channelTitleTemplateInput.value,
+                requires_approval: requiresApprovalInput.value,
             };
             
-            const response = await apiClient.createAccessDocument(accessDocumentPayload);
+            const response = await apiClient.createAccessDocument(...accessDocumentPayload);
 
             if (response && response.isValid && response.isValid())
             {

@@ -8,7 +8,6 @@ const options = {
 
 export default async function doFetch(baseURL, endpoint, method="GET", data=undefined) {
     options.method = method;
-    options.credentials = "include";
 
     // Check if the data is an instance of FormData
     if (data instanceof FormData) {

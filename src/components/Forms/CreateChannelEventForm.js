@@ -25,13 +25,13 @@ export function CreateChannelEventForm() {
         try {
             const eventPayload = {
                 channel_id: channelIDInput.value,
-                title: titleInput.value,
-                description: descriptionInput.value,
                 action_date: new Date(actionDateInput.value).toUTCString(),
                 reminder_date: new Date(reminderDateInput.value).toUTCString(),
+                title: titleInput.value,
+                description: descriptionInput.value,
             };
             
-            const response = await apiClient.createNewEvent(eventPayload);
+            const response = await apiClient.createNewEvent(...eventPayload);
 
             if (response && response.isValid()) {
                 channelIDInput.clear();
