@@ -27,8 +27,8 @@ export function CreateChannelEventForm() {
                 channel_id: channelIDInput.value,
                 title: titleInput.value,
                 description: descriptionInput.value,
-                action_date: actionDateInput.value,
-                reminder_date: reminderDateInput.value,
+                action_date: new Date(actionDateInput.value).toUTCString(),
+                reminder_date: new Date(reminderDateInput.value).toUTCString(),
             };
             
             const response = await apiClient.createNewEvent(eventPayload);
