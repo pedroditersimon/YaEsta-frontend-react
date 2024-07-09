@@ -11,7 +11,7 @@ export function CreateChannelForm() {
 
     async function handleClick() {
         setLoading(true);
-        const channel = await apiClient.createNewChannel(titleInput.value, publicInput.value);
+        const channel = await apiClient.createNewChannel({ title: titleInput.value, isPublic: publicInput.value });
 
         if (channel.isValid()) {
             titleInput.clear();

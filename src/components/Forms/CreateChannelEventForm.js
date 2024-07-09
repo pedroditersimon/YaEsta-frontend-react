@@ -31,7 +31,7 @@ export function CreateChannelEventForm() {
                 description: descriptionInput.value,
             };
             
-            const response = await apiClient.createNewEvent(...eventPayload);
+            const response = await apiClient.createNewEvent(eventPayload);
 
             if (response && response.isValid()) {
                 channelIDInput.clear();

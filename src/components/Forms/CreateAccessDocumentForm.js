@@ -30,7 +30,7 @@ export function CreateAccessDocumentForm() {
                 requires_approval: requiresApprovalInput.value,
             };
             
-            const response = await apiClient.createAccessDocument(...accessDocumentPayload);
+            const response = await apiClient.createAccessDocument(accessDocumentPayload);
 
             if (response && response.isValid && response.isValid())
             {

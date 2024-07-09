@@ -15,7 +15,7 @@ export function Login() {
 
     async function handleLoginClick() {
         setLoading(true);
-        const isLogged = await apiClient.login(usernameInput.value, passwordInput.value);
+        const isLogged = await apiClient.login({username: usernameInput.value, password: passwordInput.value});
 
         if (isLogged) {
             usernameInput.clear();
@@ -46,7 +46,13 @@ export function Register() {
 
     async function handleClick() {
         setLoading(true);
-        const isLogged = await apiClient.register(usernameInput.value, passwordInput.value, confirmPasswordInput.value);
+        
+        const registerPayload = {
+            username: usernameInput.value,
+            password: passwordInput.value,
+            repeat_password: confirmPasswordInput.value
+        };
+        const isLogged = await apiClient.register(registerPayload);
         
         if (isLogged) {
             usernameInput.clear();
