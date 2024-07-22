@@ -23,7 +23,7 @@ export function ChannelEvent({ event_info }) {
     }
 
     return (
-        <div className="container columns center">
+        <div className={`container columns center ${event.status}`}>
             <div className="columns less_gap small_text">
                 <span className="bold">Event</span>
                 <span className="">ID: {event._id}</span>

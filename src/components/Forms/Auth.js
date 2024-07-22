@@ -7,6 +7,8 @@ import './Auth.css';
 
 import { useNavigate, Link } from "react-router-dom";
 
+import { sendTokenToServer } from "../../Services/Google/firebase.mjs"
+
 export function Login() {
     const [isLoading, setLoading] = useState(false);
     const usernameInput = useFormInput('', isLoading);
@@ -20,6 +22,8 @@ export function Login() {
         if (isLogged) {
             usernameInput.clear();
             passwordInput.clear();
+            
+            await sendTokenToServer();
             navigate("/channels/my");
         }
         setLoading(false);
@@ -58,6 +62,8 @@ export function Register() {
             usernameInput.clear();
             passwordInput.clear();
             confirmPasswordInput.clear();
+
+            await sendTokenToServer();
             navigate("/channels/my");
         }
         setLoading(false);
