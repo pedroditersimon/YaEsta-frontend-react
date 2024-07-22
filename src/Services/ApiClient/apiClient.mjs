@@ -559,5 +559,5 @@ export class ApiClient {
 }
 
 // Initialize and export an instance of the ApiClient
-const apiClient = new ApiClient('http://localhost:3001');
+const apiClient = new ApiClient('https://yaesta-backend.onrender.com');
 export default apiClient;
