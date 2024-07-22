@@ -44,9 +44,10 @@ export function AccessDocument({ access_document_info }) {
                 <button className="accept_btn" onClick={handleGetClick}>Refresh</button>
                 <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
             </div>
-            {accessDocument._id &&
+            {/*
+            {accessDocument._id && accessDocument.enabled &&
                 <QRCode value={`${trigger_url}/${accessDocument._id}`}></QRCode>
-            }
+            }*/}
         </div>
     );
 }
