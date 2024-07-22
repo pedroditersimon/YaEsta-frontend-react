@@ -1,8 +1,10 @@
 import { useState } from "react";
 import apiClient from "../../Services/ApiClient/apiClient.mjs";
+import QRCode from "react-qr-code";
 
 import "./AccessDocument.css";
 
+const trigger_url = "https://yaesta-frontend-react.onrender.com/access_documents/trigger";
 export function AccessDocument({ access_document_info }) {
     const [accessDocument, setAccessDocument] = useState(access_document_info);
     const [ isDeleted, setIsDeleted ] = useState(false);
@@ -42,7 +44,9 @@ export function AccessDocument({ access_document_info }) {
                 <button className="accept_btn" onClick={handleGetClick}>Refresh</button>
                 <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
             </div>
-
+            {accessDocument._id &&
+                <QRCode value={`${trigger_url}/${accessDocument._id}`}></QRCode>
+            }
         </div>
     );
 }

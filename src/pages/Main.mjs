@@ -8,6 +8,7 @@ import { CreateChannelForm } from '../components/Forms/CreateChannelForm.js';
 import { CreateChannelEventForm } from '../components/Forms/CreateChannelEventForm.js';
 import { CreateAccessDocumentForm } from '../components/Forms/CreateAccessDocumentForm.js';
 import MyAccessDocuments from '../components/AccessDocuments/MyAccessDocuments.js';
+import { AccessDocumentTrigger } from '../components/AccessDocuments/AccessDocumentTrigger.mjs';
 
 export default function Main() {
   return (
@@ -25,6 +26,7 @@ export default function Main() {
       
       <Route path="/access_documents/create" element={<CreateAccessDocumentForm />} />
       <Route path="/access_documents/my" element={<MyAccessDocuments />} />
+      <Route path="/access_documents/trigger/:access_document_id" element={<AccessDocumentTrigger />} />
     </Routes>
   );
 }
