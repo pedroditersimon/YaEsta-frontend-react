@@ -1,7 +1,0 @@
-static:
-  buildCommand: "npm run build"
-  publishDir: "build"
-  redirects:
-    - from: "/*"
-      to: "/index.html"
-      status: 200
