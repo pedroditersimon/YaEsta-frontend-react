@@ -21,8 +21,8 @@ import { AccessDocumentTrigger } from '../components/AccessDocuments/AccessDocum
 export default function App() {
   return (
     <div className="App rows">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<h1>hola</h1>} />
           <Route path="/login" element={<Login />} />
