@@ -7,7 +7,6 @@ import messaging from '../Services/Google/firebase.mjs';
 import { BrowserRouter , Route, Routes} from 'react-router-dom';
 
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
 
 import { Login, Register, Logout } from "../components/Forms/Auth.js";
 import SearchChannelPanel from '../components/Channels/SearchChannelPanel.js';
