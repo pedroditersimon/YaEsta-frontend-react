@@ -48,6 +48,7 @@ export function AccessDocument({ access_document_info }) {
             {accessDocument._id && accessDocument.enabled &&
                 <QRCode value={`${trigger_url}/${accessDocument._id}`}></QRCode>
             }*/}
+            <QRCode value={`${trigger_url}/${accessDocument._id}`}></QRCode>
         </div>
     );
 }
