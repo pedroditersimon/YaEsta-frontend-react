@@ -45,7 +45,7 @@ export function AccessDocument({ access_document_info }) {
                 <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
             </div>
             {accessDocument._id && accessDocument.enabled ? (
-                <QRCodeSVG value="asd" />
+                <QRCodeSVG value={`${trigger_url}/${accessDocument._id}`} />
             ) : (
                 <span>QR Code</span>
             )}
