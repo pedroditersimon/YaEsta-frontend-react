@@ -1,6 +1,6 @@
 import { useState } from "react";
 import apiClient from "../../Services/ApiClient/apiClient.mjs";
-import QRCode from "react-qr-code";
+import {QRCodeSVG} from 'qrcode.react';
 
 import "./AccessDocument.css";
 
@@ -45,7 +45,7 @@ export function AccessDocument({ access_document_info }) {
                 <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
             </div>
             {accessDocument._id && accessDocument.enabled ? (
-                <QRCode value="asd" />
+                <QRCodeSVG value="asd" />
             ) : (
                 <span>QR Code</span>
             )}
