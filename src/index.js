@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { BrowserRouter , Route, Routes} from 'react-router-dom';
 import { AccessDocumentTrigger } from './components/AccessDocuments/AccessDocumentTrigger.mjs';
 import './index.css';
 import App from './pages/App';
@@ -9,10 +8,7 @@ import App from './pages/App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
       <App /> {/* The various pages will be displayed by the `Main` component. */}
-
-    </BrowserRouter>
   </React.StrictMode>
 );
 
