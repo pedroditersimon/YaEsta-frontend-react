@@ -38,7 +38,7 @@ export function Channel({ channel }) {
     }
 
     return (
-        <div className="columns">
+        <div className="rows">
             <div className="container columns center">
                 <div className="columns less_gap small_text">
                     <span className="bold">Channel</span>

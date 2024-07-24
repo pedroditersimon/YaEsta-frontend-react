@@ -62,7 +62,7 @@ async function init() {
 export async function sendTokenToServer() {
   try {
     console.log("Sending token: "+ token);
-    const success = await apiClient.resubscribe_user_notifications(token);
+    const success = await apiClient.subscribe_user_notifications(token);
     if (success) {
       console.log('Notification token sended to server.');
     } else {

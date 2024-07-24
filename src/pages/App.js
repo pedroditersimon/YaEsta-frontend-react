@@ -16,7 +16,7 @@ import { CreateChannelEventForm } from '../components/Forms/CreateChannelEventFo
 import { CreateAccessDocumentForm } from '../components/Forms/CreateAccessDocumentForm.js';
 import MyAccessDocuments from '../components/AccessDocuments/MyAccessDocuments.js';
 import { AccessDocumentTrigger } from '../components/AccessDocuments/AccessDocumentTrigger.mjs';
-
+import MyAdminChannels from '../components/Channels/MyAdminChannels.js';
 
 export default function App() {
   return (
@@ -32,6 +32,7 @@ export default function App() {
           <Route path="/channels/create" element={<CreateChannelForm />} />
           <Route path="/channels/my" element={<MyChannels />} />
           <Route path="/channels/search" element={<SearchChannelPanel />} />
+          <Route path="/channels/admin/my" element={<MyAdminChannels />} />
 
           <Route path="/events/create" element={<CreateChannelEventForm />} />
 

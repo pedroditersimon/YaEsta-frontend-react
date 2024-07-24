@@ -5,32 +5,33 @@ import apiClient from '../../Services/ApiClient/apiClient.mjs';
 
 import {Link} from "react-router-dom";
 
-import './MyChannels.css';
+import './MyAdminChannels.css';
 
-export default function MyChannels() {
+export default function MyAdminChannels() {
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const getMyChannels = async () => {
+    const getMyAdminChannels = async () => {
         setIsLoading(true);
         setResults([]);
         
-        const results = await apiClient.getUserChannels();
+        const results = await apiClient.getUserAdminChannels();
         setResults(results);
         setIsLoading(false);
     };
 
     useEffect(() => {
-        getMyChannels();
+        getMyAdminChannels();
     }, []);
 
     return (
         <div >
             <div className='rows center'>
-                <h1 className="title">Mis Canales</h1>
-                <button className="accept_btn" onClick={getMyChannels} disabled={isLoading}>
+                <h1 className="title">Administrar Canales</h1>
+                <button className="accept_btn" onClick={getMyAdminChannels} disabled={isLoading}>
                     {isLoading ? 'Refreshing...' : 'Refresh'}
                 </button>
+                <Link className="accept_btn" to={"/channels/create"}>Crear canal</Link>
             </div>
             <div className='columns'>
                 {isLoading && <p className="loading_text">Loading...</p>}
