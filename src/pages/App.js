@@ -7,6 +7,7 @@ import messaging from '../Services/Google/firebase.mjs';
 import { BrowserRouter , Route, Routes} from 'react-router-dom';
 
 import React from 'react';
+import { LoggedUserContext, LoggedUserContextProvider } from '../contexts/userContext.mjs';
 
 import { Login, Register, Logout } from "../components/Forms/Auth.js";
 import SearchChannelPanel from '../components/Channels/SearchChannelPanel.js';
@@ -21,26 +22,28 @@ import MyAdminChannels from '../components/Channels/MyAdminChannels.js';
 export default function App() {
   return (
     <div className="App rows">
-      <BrowserRouter>
+      <LoggedUserContextProvider>
+        <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<h1>hola</h1>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logout" element={<Logout />} />
+          <Routes>
+            <Route path="/" element={<h1>hola</h1>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/logout" element={<Logout />} />
 
-          <Route path="/channels/create" element={<CreateChannelForm />} />
-          <Route path="/channels/my" element={<MyChannels />} />
-          <Route path="/channels/search" element={<SearchChannelPanel />} />
-          <Route path="/channels/admin/my" element={<MyAdminChannels />} />
+            <Route path="/channels/create" element={<CreateChannelForm />} />
+            <Route path="/channels/my" element={<MyChannels />} />
+            <Route path="/channels/search" element={<SearchChannelPanel />} />
+            <Route path="/channels/admin/my" element={<MyAdminChannels />} />
 
-          <Route path="/events/create" element={<CreateChannelEventForm />} />
+            <Route path="/events/create" element={<CreateChannelEventForm />} />
 
-          <Route path="/access_documents/create" element={<CreateAccessDocumentForm />} />
-          <Route path="/access_documents/my" element={<MyAccessDocuments />} />
-          <Route path="/access_documents/trigger/:access_document_id" element={<AccessDocumentTrigger />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="/access_documents/create" element={<CreateAccessDocumentForm />} />
+            <Route path="/access_documents/my" element={<MyAccessDocuments />} />
+            <Route path="/access_documents/trigger/:access_document_id" element={<AccessDocumentTrigger />} />
+          </Routes>
+        </BrowserRouter>
+      </LoggedUserContextProvider>
     </div>
   );
 }

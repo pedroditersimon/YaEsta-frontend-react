@@ -1,15 +1,15 @@
 import apiClient from "../../Services/ApiClient/apiClient.mjs";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
 import {useFormInput} from "../../hooks/useFormInput";
-
-import './Auth.css';
-
 import { useNavigate, Link } from "react-router-dom";
-
+import { LoggedUserContext, LoggedUserContextProvider } from '../../contexts/userContext.mjs';
 import { sendTokenToServer } from "../../Services/Google/firebase.mjs"
+import './Auth.css';
+import { ResponseUser } from "../../Services/ApiClient/responseModels.mjs";
+
 
 export function Login() {
+    const {loggedUser, setLoggedUser}  = useContext(LoggedUserContext);
     const [isLoading, setLoading] = useState(false);
     const usernameInput = useFormInput('', isLoading);
     const passwordInput = useFormInput('', isLoading);
@@ -22,7 +22,11 @@ export function Login() {
         if (isLogged) {
             usernameInput.clear();
             passwordInput.clear();
-            
+
+            // set user to context
+            const user = await apiClient.getLoggedUser();
+            setLoggedUser(user);
+
             await sendTokenToServer();
             navigate("/channels/my");
         }
@@ -42,6 +46,7 @@ export function Login() {
 }
 
 export function Register() {
+    const {loggedUser, setLoggedUser}  = useContext(LoggedUserContext);
     const [isLoading, setLoading] = useState(false);
     const usernameInput = useFormInput('', isLoading);
     const passwordInput = useFormInput('', isLoading);
@@ -62,6 +67,10 @@ export function Register() {
             usernameInput.clear();
             passwordInput.clear();
             confirmPasswordInput.clear();
+
+            // set user to context
+            const user = await apiClient.getLoggedUser();
+            setLoggedUser(user);
 
             await sendTokenToServer();
             navigate("/channels/my");
@@ -84,6 +93,7 @@ export function Register() {
 
 
 export function Logout() {
+    const {loggedUser, setLoggedUser}  = useContext(LoggedUserContext);
     const [isLoading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -92,6 +102,8 @@ export function Logout() {
         const loggedOut = await apiClient.logout();
 
         if (loggedOut) {
+            // put empty logged user obj
+            setLoggedUser(new ResponseUser());
             navigate("/login");
         }
         setLoading(false);

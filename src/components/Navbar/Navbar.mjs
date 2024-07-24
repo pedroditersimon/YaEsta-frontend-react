@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import "../../css/generics.css";
+import { LoggedUserContext, LoggedUserContextProvider } from '../../contexts/userContext.mjs';
+
+function WelcomeMessage() {
+  const {loggedUser, setLoggedUser}  = useContext(LoggedUserContext);
+
+  return (
+    <span className='small_text'>
+      {loggedUser.isValid() ? (
+        <>Bienvenido <strong>{loggedUser.username}!</strong></>
+      ) : (
+        <><strong>(!) SIN SESION</strong></>
+      )}
+    </span>
+  );
+};
 
 export default function Navbar() {
   return (
     <div className='container columns'>
+        <WelcomeMessage/>
 
         <Link className='accept_btn' to={"/logout"}> logout </Link>
         <Link className='accept_btn' to={"/channels/my"}> mis canales </Link>
