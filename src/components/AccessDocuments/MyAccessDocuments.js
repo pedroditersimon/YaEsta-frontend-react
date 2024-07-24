@@ -38,7 +38,7 @@ export default function MyAccessDocuments() {
             {results.length > 0 && 
                 <div className='columns'>
                     {isLoading && <p className="loading_text">Loading...</p>}
-                    <AccessDocumentList documents={results} />
+                    <AccessDocumentList documents={results} admin_mode={true} />
                 </div>
             }
         </div>
