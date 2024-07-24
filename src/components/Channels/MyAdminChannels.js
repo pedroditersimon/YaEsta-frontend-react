@@ -35,7 +35,7 @@ export default function MyAdminChannels() {
             </div>
             <div className='columns'>
                 {isLoading && <p className="loading_text">Loading...</p>}
-                <ChannelList channels={results} />
+                <ChannelList channels={results} admin_mode={true} />
             </div>
         </div>
     );

@@ -6,7 +6,7 @@ import "./Channel.css";
 
 import { Link } from "react-router-dom";
 
-export function Channel({ channel }) {
+export function Channel({ channel , admin_mode=false}) {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ isDeleted, setIsDeleted ] = useState(false);
 
@@ -42,7 +42,9 @@ export function Channel({ channel }) {
             <div className="container columns center">
                 <div className="columns less_gap small_text">
                     <span className="bold">Channel</span>
-                    <span className="">ID: {channel._id}</span>
+                    {admin_mode && (<>
+                        <span className="">ID: {channel._id}</span>
+                    </>)}
                     <span className="">Creation Date: {channel.creation_date}</span>
                     <span className="">Title: {channel.title}</span>
                     <span className="">Public: {channel.isPublic ? 'Yes' : 'No'}</span>
@@ -54,13 +56,18 @@ export function Channel({ channel }) {
                     <button disabled={isLoading} className="cancel_btn" onClick={handleUnsubscribeClick}>De-subscribirse</button>
                     <button disabled={isLoading} className="accept_btn" onClick={handleSubscribeClick}>Subscribirse</button>
                 </div>
-                <button disabled={isLoading} className="cancel_btn" onClick={handleDeleteClick}>Borrar canal</button>
-                <Link className="accept_btn" to={`/events/create/?channel_id=${channel._id}`}>Crear evento</Link>
-                <Link className="accept_btn" to={`/access_documents/create/?target_channel_id=${channel._id}`}>Crear documento de acceso</Link>
+                {admin_mode && (<>
+                    <button disabled={isLoading} className="cancel_btn" onClick={handleDeleteClick}>Borrar canal</button>
+                    <Link className="accept_btn" to={`/events/create/?channel_id=${channel._id}`}>Crear evento</Link>
+                    <Link className="accept_btn" to={`/access_documents/create/?target_channel_id=${channel._id}`}>Crear documento de acceso</Link>
+                </>)}
             </div>
             
-            <ChannelEventsList channel_id={channel._id} />
-            <ChannelAccessDocumentList channel_id={channel._id} />
+            {admin_mode && (<>
+                <ChannelAccessDocumentList channel_id={channel._id} admin_mode={admin_mode} />
+            </>)}
+            <ChannelEventsList channel_id={channel._id} admin_mode={admin_mode} />
+
         </div>
        
     );

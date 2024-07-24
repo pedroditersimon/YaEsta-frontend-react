@@ -4,7 +4,7 @@ import apiClient from "../../Services/ApiClient/apiClient.mjs";
 import "./ChannelAccessDocumentList.css";
 import {AccessDocument} from "./AccessDocument.mjs";
 
-export function ChannelAccessDocumentList({ channel_id="", documents=[] }) {
+export function ChannelAccessDocumentList({ channel_id="", documents=[], admin_mode=false }) {
     const [accessDocuments, setAccessDocuments] = useState(documents);
     const [ isLoading, setIsLoading ] = useState(false);
 
@@ -25,7 +25,7 @@ export function ChannelAccessDocumentList({ channel_id="", documents=[] }) {
     }, []);
 
     return (
-        <div className="rows">
+        <div className="columns">
             <button disabled={isLoading} className="accept_btn" onClick={handleGetClick}>Get AccessDocuments</button>
             {accessDocuments.length == 0 && 
                 <span className="small_text">No hay nada que mostrar</span>
@@ -34,7 +34,7 @@ export function ChannelAccessDocumentList({ channel_id="", documents=[] }) {
                 <div className='rows center'>
                     {accessDocuments.map(accessDoc => (
                         <div name={accessDoc._id}>
-                            <AccessDocument access_document_info={accessDoc} />
+                            <AccessDocument access_document_info={accessDoc} admin_mode={admin_mode} />
                         </div>
                     ))}
                 </div>

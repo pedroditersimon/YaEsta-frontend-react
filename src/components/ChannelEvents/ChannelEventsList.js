@@ -4,7 +4,7 @@ import apiClient from '../../Services/ApiClient/apiClient.mjs';
 
 import './ChannelEventsList.css';
 
-export default function ChannelEventsList({ channel_id, channel_events=[] }) {
+export default function ChannelEventsList({ channel_id, channel_events=[], admin_mode=false }) {
     const [ isLoading, setIsLoading ] = useState(false);
     const [events, setEvents] = useState(channel_events);
 
@@ -24,7 +24,7 @@ export default function ChannelEventsList({ channel_id, channel_events=[] }) {
     }, []);
 
     return (
-        <div className="rows">
+        <div className="columns">
             <button disabled={isLoading} className="accept_btn" onClick={handleGetClick}>Get events</button>
             {events.length == 0 && 
                 <span className="small_text">No hay nada que mostrar</span>
@@ -33,7 +33,7 @@ export default function ChannelEventsList({ channel_id, channel_events=[] }) {
                 <div className='rows center'>
                     {events.map(event => (
                         <div name={event._id}>
-                            <ChannelEvent event_info={event} />
+                            <ChannelEvent event_info={event} admin_mode={admin_mode} />
                         </div>
                     ))}
                 </div>

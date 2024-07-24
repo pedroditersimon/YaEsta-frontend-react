@@ -5,7 +5,7 @@ import {QRCodeSVG} from 'qrcode.react';
 import "./AccessDocument.css";
 
 const trigger_url = "https://yaesta-frontend-react.onrender.com/access_documents/trigger";
-export function AccessDocument({ access_document_info }) {
+export function AccessDocument({ access_document_info, admin_mode=false }) {
     const [accessDocument, setAccessDocument] = useState(access_document_info);
     const [ isDeleted, setIsDeleted ] = useState(false);
 
@@ -28,11 +28,15 @@ export function AccessDocument({ access_document_info }) {
         <div className="container columns center">
             <div className="columns less_gap small_text">
                 <span className="bold">AccessDocument</span>
-                <span className="">ID: {accessDocument._id}</span>
+                {admin_mode &&
+                    <span className="">ID: {accessDocument._id}</span>
+                }
                 <span className="">creation_date: {accessDocument.creation_date}</span>
                 <span className="">enabled: {accessDocument.enabled? 'Yes' : 'No'}</span>
                 <span className="">requires_approval: {accessDocument.requires_approval? 'Yes' : 'No'}</span>
-                <span className="">action_type: {accessDocument.action_type}</span>
+                {admin_mode &&
+                    <span className="">action_type: {accessDocument.action_type}</span>
+                }
                 {accessDocument.action_type === "create" &&
                     <span className="">Channel Title Template: {accessDocument.channel_title_template}</span>
                 }
@@ -42,7 +46,9 @@ export function AccessDocument({ access_document_info }) {
             </div>
             <div className="rows">
                 <button className="accept_btn" onClick={handleGetClick}>Refresh</button>
-                <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
+                {admin_mode &&
+                    <button className="cancel_btn" onClick={handleDeleteClick}>Borrar</button>
+                }
             </div>
             {accessDocument._id && accessDocument.enabled ? (
                 <QRCodeSVG value={`${trigger_url}/${accessDocument._id}`} />

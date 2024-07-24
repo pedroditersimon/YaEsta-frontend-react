@@ -24,7 +24,7 @@ export default function App() {
     <div className="App rows">
       <LoggedUserContextProvider>
         <BrowserRouter>
-        <Navbar />
+          <Navbar />
           <Routes>
             <Route path="/" element={<h1>hola</h1>} />
             <Route path="/login" element={<Login />} />
