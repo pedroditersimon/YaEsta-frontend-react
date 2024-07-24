@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ResponseUser } from '../Services/ApiClient/responseModels.mjs';
-import apiClient from '../Services/ApiClient'; // Asegúrate de que esta importación es correcta
-
+import apiClient
+ from '../Services/ApiClient/apiClient.mjs';
 // Crear el contexto
 const LoggedUserContext = createContext();
 
