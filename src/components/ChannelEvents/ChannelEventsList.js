@@ -13,8 +13,13 @@ export default function ChannelEventsList({ channel_id, channel_events=[], admin
         setIsLoading(true);
         setEvents([]);
 
-        // user must have to use getChannelCompletedEvents insted!
-        const result = await apiClient.getEventsByChannelID(channel_id);
+        var result;
+        if (admin_mode) {
+            result = await apiClient.getEventsByChannelID(channel_id);
+        }
+        else {
+            result = await apiClient.getCompletedEventsByChannelID(channel_id);
+        }
         setEvents(result);
         setIsLoading(false);
     }
